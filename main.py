@@ -86,7 +86,6 @@ class Saque(Transacao):
 
 
 if __name__ == "__main__":
-    # 1. Create a customer
     joao = PessoaFisica(
         cpf="123.456.789-00",
         nome="João da Silva",
@@ -94,17 +93,14 @@ if __name__ == "__main__":
         endereco="Rua das Flores, 123"
     )
 
-    # 2. Create a checking account (Conta Corrente)
     conta = ContaCorrente.nova_conta(joao, 1001)
     joao.adicionar_conta(conta)
 
-    # 3. Perform a Deposit
     print(f"Saldo Inicial: R$ {conta.saldo():.2f}")
     deposito = Deposito(500.0)
     joao.realizar_transacao(conta, deposito)
     print(f"Saldo após depósito: R$ {conta.saldo():.2f}")
 
-    # 4. Perform a Withdrawal
     saque = Saque(150.0)
     joao.realizar_transacao(conta, saque)
     print(f"Saldo após saque: R$ {conta.saldo():.2f}")
